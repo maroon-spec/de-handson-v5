@@ -1,0 +1,79 @@
+-- Databricks notebook source
+-- MAGIC %md
+-- MAGIC
+-- MAGIC ## 複数のGold Tableを作成しなくても、Metric Viewで代替してみよう。
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC
+-- MAGIC handson_catalog.databricks.silver_inquiry_sales　から、分析に使いためのMetric Viewを作成。
+-- MAGIC [カタログ]メニューから、対象のテーブル画面から、Metric View(inquiry_metric_view) を作成してみよう。
+-- MAGIC
+-- MAGIC AI Assistant を使って、以下のように聞いてみよう
+-- MAGIC ```
+-- MAGIC 問い合わせの分析をするためのMetric Viewを作成したい。
+-- MAGIC ```
+-- MAGIC
+-- MAGIC
+
+-- COMMAND ----------
+
+-- DBTITLE 1,作成結果サンプル
+-- MAGIC %skip
+-- MAGIC version: 1.1
+-- MAGIC
+-- MAGIC source: handson_catalog.databricks.silver_inquiry_sales
+-- MAGIC
+-- MAGIC dimensions:
+-- MAGIC   - name: inquiry_date
+-- MAGIC     expr: inquiry_date
+-- MAGIC     comment: 問い合わせが発生した日付
+-- MAGIC     display_name: 問い合わせ日
+-- MAGIC     format:
+-- MAGIC       type: date
+-- MAGIC       date_format: year_month_day
+-- MAGIC       leading_zeros: false
+-- MAGIC   - name: inquiry_type
+-- MAGIC     expr: inquiry_type
+-- MAGIC     comment: "問い合わせの種類（例: 一般問い合わせ、苦情、追加保障相談）"
+-- MAGIC     display_name: 問い合わせタイプ
+-- MAGIC   - name: inquiry_channel
+-- MAGIC     expr: inquiry_channel
+-- MAGIC     comment: "問い合わせのチャネル（例: 電話、メール、対面）"
+-- MAGIC     display_name: 問い合わせチャネル
+-- MAGIC   - name: resolution_status
+-- MAGIC     expr: resolution_status
+-- MAGIC     comment: "問い合わせの解決状況（例: 新規、解決、対応中、未解決）"
+-- MAGIC     display_name: 解決状況
+-- MAGIC   - name: cs_rep
+-- MAGIC     expr: cs_rep
+-- MAGIC     comment: 問い合わせ対応の担当者
+-- MAGIC     display_name: CS担当
+-- MAGIC   - name: gender
+-- MAGIC     expr: gender
+-- MAGIC     comment: 契約者の性別
+-- MAGIC     display_name: 性別
+-- MAGIC   - name: residence_prefecture
+-- MAGIC     expr: residence_prefecture
+-- MAGIC     comment: 契約者の居住都道府県
+-- MAGIC     display_name: 都道府県
+-- MAGIC
+-- MAGIC measures:
+-- MAGIC   - name: inquiry_count
+-- MAGIC     expr: count(inquiry_id)
+-- MAGIC     comment: 問い合わせの総件数
+-- MAGIC     display_name: 問い合わせ件数
+-- MAGIC   - name: resolved_inquiry_count
+-- MAGIC     expr: count(inquiry_id) filter(where resolution_status = '解決')
+-- MAGIC     comment: 解決済みの問い合わせ件数
+-- MAGIC     display_name: 解決済み件数
+-- MAGIC   - name: unresolved_inquiry_count
+-- MAGIC     expr: count(inquiry_id) filter(where resolution_status = '未解決')
+-- MAGIC     comment: 未解決の問い合わせ件数
+-- MAGIC     display_name: 未解決件数
+-- MAGIC   - name: avg_resolution_days
+-- MAGIC     expr: "avg(datediff(resolution_date, inquiry_date)) filter(where resolution_date\
+-- MAGIC       \ is not null)"
+-- MAGIC     comment: 問い合わせから解決までの日数の平均（解決日が存在する場合のみ）
+-- MAGIC     display_name: 平均解決日数
