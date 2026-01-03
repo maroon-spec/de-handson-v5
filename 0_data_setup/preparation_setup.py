@@ -20,7 +20,7 @@ schema = 'handson_db'
 # DBTITLE 1,Catalog準備
 # Catalog 作成
 spark.sql(f'CREATE CATALOG IF NOT EXISTS {catalog}')
-spark.sql(f'GRANT CREATE, USAGE ON CATALOG {catalog} TO `account users`')
+spark.sql(f'GRANT ALL PRIVILEGES ON CATALOG {catalog} TO `account users`')
 spark.sql(f'USE CATALOG {catalog}')
 
 # Schema 作成

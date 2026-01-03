@@ -768,6 +768,11 @@
     "theme": {
       "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
     },
+    "genieSpace": {
+      "isEnabled": true,
+      "overrideId": "01f0e7aad44e1c959dc766463c45662c",
+      "enablementMode": "ENABLED"
+    },
     "applyModeEnabled": false
   }
 }
