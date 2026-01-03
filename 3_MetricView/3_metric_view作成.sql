@@ -46,10 +46,6 @@
 -- MAGIC     expr: resolution_status
 -- MAGIC     comment: "問い合わせの解決状況（例: 新規、解決、対応中、未解決）"
 -- MAGIC     display_name: 解決状況
--- MAGIC   - name: cs_rep
--- MAGIC     expr: cs_rep
--- MAGIC     comment: 問い合わせ対応の担当者
--- MAGIC     display_name: CS担当
 -- MAGIC   - name: gender
 -- MAGIC     expr: gender
 -- MAGIC     comment: 契約者の性別
@@ -58,6 +54,18 @@
 -- MAGIC     expr: residence_prefecture
 -- MAGIC     comment: 契約者の居住都道府県
 -- MAGIC     display_name: 都道府県
+-- MAGIC   - name: sales_rep_name
+-- MAGIC     expr: sales_rep_name
+-- MAGIC     comment: 営業担当者名
+-- MAGIC     display_name: 営業担当者名
+-- MAGIC   - name: inquiry_user_name
+-- MAGIC     expr: name
+-- MAGIC     comment: 問い合わせユーザー名
+-- MAGIC     display_name: 問い合わせユーザー名
+-- MAGIC   - name: inquiry_detail
+-- MAGIC     expr: inquiry_detail
+-- MAGIC     comment: 問い合わせ内容
+-- MAGIC     display_name: 問い合わせ内容
 -- MAGIC
 -- MAGIC measures:
 -- MAGIC   - name: inquiry_count
