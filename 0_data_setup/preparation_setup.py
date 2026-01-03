@@ -195,7 +195,7 @@ for column, comment in column_comments.items():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### bronze_inquiry_history（問い合わせ履歴）
+# MAGIC ## bronze_inquiry_history（問い合わせ履歴）
 
 # COMMAND ----------
 
@@ -326,93 +326,6 @@ column_comments = {
     "resolution_date": "日付、YYYY-MM-DDフォーマット、解決日",
     "resolution_status": "文字列、解決状況、例: '新規', '解決', '対応中', '未解決'",
     "cs_rep": "文字列、CS担当"
-}
-
-for column, comment in column_comments.items():
-    # シングルクォートをエスケープ
-    escaped_comment = comment.replace("'", "\\'")
-    sql_query = f"ALTER TABLE {table_name} ALTER COLUMN {column} COMMENT '{escaped_comment}'"
-    spark.sql(sql_query)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Payment 履歴
-
-# COMMAND ----------
-
-import random
-from datetime import datetime, timedelta
-from pyspark.sql.functions import to_date
-
-# bronze_table から user_id を取得
-user_ids = [row.user_id for row in spark.table(f"{schema_path}.bronze_user").select("user_id").collect()]
-
-# 保険料支払いデータを生成
-premium_payment_data = []
-for user_id in user_ids:
-    # 各 user_id に対して複数の支払いデータを生成
-    for _ in range(random.randint(1, 3)):  # 1から3件の支払いデータを生成
-        premium_payment_data.append((
-            len(premium_payment_data) + 1,
-            user_id,
-            (datetime.now() - timedelta(days=random.randint(0, 365))).strftime('%Y-%m-%d'),
-            random.randint(2500, 8333),
-            random.choice(["正常", "正常", "正常", "正常", "正常", "正常", "正常", "正常", "遅延", "未払い"])
-        ))
-
-premium_payment_df = spark.createDataFrame(premium_payment_data,
-    ["payment_id", "user_id", "payment_date", "payment_amount", "payment_status"])
-
-# 日付型に変換
-premium_payment_df = premium_payment_df.withColumn("payment_date", to_date("payment_date", "yyyy-MM-dd"))
-
-# Save Data
-premium_payment_df.write.format("delta").mode("overwrite").saveAsTable(f'{schema_path}.bronze_payment')
-
-# Set the Primary Key
-spark.sql(f"ALTER TABLE {schema_path}.bronze_payment ALTER COLUMN payment_id SET NOT NULL")
-
-# 既存の主キー制約があれば削除（存在しない場合はエラーを無視）
-try:
-    spark.sql(f"ALTER TABLE {schema_path}.bronze_payment DROP CONSTRAINT payment_id_pk")
-except Exception as e:
-    if "CONSTRAINT_DOES_NOT_EXIST" in str(e) or "does not exist" in str(e):
-        pass
-    else:
-        raise
-
-spark.sql(f"ALTER TABLE {schema_path}.bronze_payment ADD CONSTRAINT payment_id_pk PRIMARY KEY (payment_id)")
-
-# 外部キーの作成（既に存在する場合は無視）
-try:
-    spark.sql(f"ALTER TABLE {schema_path}.bronze_payment ADD CONSTRAINT fk2_user_id FOREIGN KEY (user_id) REFERENCES {schema_path}.bronze_user(user_id)")
-except Exception as e:
-    if "CONSTRAINT_ALREADY_EXISTS_IN_SCHEMA" in str(e):
-        print("外部キー制約 'fk2_user_id' は既に存在します。スキップします。")
-    else:
-        raise
-
-display(premium_payment_df)
-
-# COMMAND ----------
-
-# テーブル名
-table_name = f'{schema_path}.bronze_payment'
-
-# テーブルコメント
-comment = """
-`bronze_payment`テーブルには、FSI生命保険デモにおけるブロンズプレミアム契約の支払いに関連するデータが含まれています。このテーブルには、支払いID、契約ID、支払日、支払額、および支払いステータスが含まれています。支払いIDは主キーとして機能し、各支払いを一意に識別します。ユーザーIDは外部キーであり、各ユーザーに対応するユーザーにリンクします。支払日は支払いが行われた日付を示し、支払額は各支払いに対して支払われた金額を示します。最後に、支払いステータスは各支払いの現在の状態を表し、「正常」、「遅延」または「未払い」などのステータスが含まれます。
-"""
-spark.sql(f'COMMENT ON TABLE {table_name} IS "{comment}"')
-
-# カラムコメント
-column_comments = {
-    "payment_id": "整数、ユニーク（主キー）、支払いID",
-    "user_id": "整数、ユニーク（外部キー）、ユーザーID",
-    "payment_date": "日付、YYYY-MM-DDフォーマット、支払い日",
-    "payment_amount": "整数、支払い料金",
-    "payment_status": "文字列、支払い状況、例: '正常', '遅延', '未払い'"
 }
 
 for column, comment in column_comments.items():
