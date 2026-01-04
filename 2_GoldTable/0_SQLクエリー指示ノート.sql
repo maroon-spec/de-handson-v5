@@ -12,6 +12,12 @@
 
 -- MAGIC %md
 -- MAGIC ## SQLクエリーのAI Assistant への支持例
+-- MAGIC
+-- MAGIC スキーマのパス (handson_catalog.databricks) は随時、ご自身のパスに変更してください。
+
+-- COMMAND ----------
+
+-- MAGIC %run ../0_userenv
 
 -- COMMAND ----------
 
