@@ -1,9 +1,9 @@
 {
   "datasets": [
     {
-      "name": "2c725590",
-      "displayName": "inquiry_metric_view",
-      "asset_name": "handson_catalog.databricks.inquiry_metric_view"
+      "name": "5212cd60",
+      "displayName": "silver_inquiry_sales_metric_view",
+      "asset_name": "handson_catalog.databricks.silver_inquiry_sales_metric_view"
     }
   ],
   "pages": [
@@ -34,7 +34,7 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "inquiry_channel",
@@ -92,7 +92,7 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "resolution_status",
@@ -150,7 +150,7 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "inquiry_channel",
@@ -248,7 +248,7 @@
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "inquiry_date",
@@ -267,20 +267,8 @@
                       "expression": "`resolution_status`"
                     },
                     {
-                      "name": "gender",
-                      "expression": "`gender`"
-                    },
-                    {
-                      "name": "residence_prefecture",
-                      "expression": "`residence_prefecture`"
-                    },
-                    {
                       "name": "sales_rep_name",
                       "expression": "`sales_rep_name`"
-                    },
-                    {
-                      "name": "inquiry_user_name",
-                      "expression": "`inquiry_user_name`"
                     },
                     {
                       "name": "inquiry_detail",
@@ -402,58 +390,6 @@
                     "preserveWhitespace": false
                   },
                   {
-                    "fieldName": "gender",
-                    "booleanValues": [
-                      "false",
-                      "true"
-                    ],
-                    "imageUrlTemplate": "{{ @ }}",
-                    "imageTitleTemplate": "{{ @ }}",
-                    "imageWidth": "",
-                    "imageHeight": "",
-                    "linkUrlTemplate": "{{ @ }}",
-                    "linkTextTemplate": "{{ @ }}",
-                    "linkTitleTemplate": "{{ @ }}",
-                    "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
-                    "visible": true,
-                    "order": 100004,
-                    "title": "gender",
-                    "allowSearch": false,
-                    "alignContent": "left",
-                    "allowHTML": false,
-                    "highlightLinks": false,
-                    "useMonospaceFont": false,
-                    "preserveWhitespace": false
-                  },
-                  {
-                    "fieldName": "residence_prefecture",
-                    "booleanValues": [
-                      "false",
-                      "true"
-                    ],
-                    "imageUrlTemplate": "{{ @ }}",
-                    "imageTitleTemplate": "{{ @ }}",
-                    "imageWidth": "",
-                    "imageHeight": "",
-                    "linkUrlTemplate": "{{ @ }}",
-                    "linkTextTemplate": "{{ @ }}",
-                    "linkTitleTemplate": "{{ @ }}",
-                    "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
-                    "visible": true,
-                    "order": 100005,
-                    "title": "residence_prefecture",
-                    "allowSearch": false,
-                    "alignContent": "left",
-                    "allowHTML": false,
-                    "highlightLinks": false,
-                    "useMonospaceFont": false,
-                    "preserveWhitespace": false
-                  },
-                  {
                     "fieldName": "sales_rep_name",
                     "booleanValues": [
                       "false",
@@ -472,32 +408,6 @@
                     "visible": true,
                     "order": 100006,
                     "title": "sales_rep_name",
-                    "allowSearch": false,
-                    "alignContent": "left",
-                    "allowHTML": false,
-                    "highlightLinks": false,
-                    "useMonospaceFont": false,
-                    "preserveWhitespace": false
-                  },
-                  {
-                    "fieldName": "inquiry_user_name",
-                    "booleanValues": [
-                      "false",
-                      "true"
-                    ],
-                    "imageUrlTemplate": "{{ @ }}",
-                    "imageTitleTemplate": "{{ @ }}",
-                    "imageWidth": "",
-                    "imageHeight": "",
-                    "linkUrlTemplate": "{{ @ }}",
-                    "linkTextTemplate": "{{ @ }}",
-                    "linkTitleTemplate": "{{ @ }}",
-                    "linkOpenInNewTab": true,
-                    "type": "string",
-                    "displayAs": "string",
-                    "visible": true,
-                    "order": 100007,
-                    "title": "inquiry_user_name",
                     "allowSearch": false,
                     "alignContent": "left",
                     "allowHTML": false,
@@ -533,7 +443,33 @@
                   }
                 ]
               },
-              "invisibleColumns": [],
+              "invisibleColumns": [
+                {
+                  "booleanValues": [
+                    "false",
+                    "true"
+                  ],
+                  "imageUrlTemplate": "{{ @ }}",
+                  "imageTitleTemplate": "{{ @ }}",
+                  "imageWidth": "",
+                  "imageHeight": "",
+                  "linkUrlTemplate": "{{ @ }}",
+                  "linkTextTemplate": "{{ @ }}",
+                  "linkTitleTemplate": "{{ @ }}",
+                  "linkOpenInNewTab": true,
+                  "name": "name",
+                  "type": "string",
+                  "displayAs": "string",
+                  "order": 100006,
+                  "title": "name",
+                  "allowSearch": false,
+                  "alignContent": "left",
+                  "allowHTML": false,
+                  "highlightLinks": false,
+                  "useMonospaceFont": false,
+                  "preserveWhitespace": false
+                }
+              ],
               "allowHTMLByDefault": false,
               "itemsPerPage": 25,
               "paginationSize": "default",
@@ -569,16 +505,16 @@
             "name": "okyakusama",
             "queries": [
               {
-                "name": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_user_name",
+                "name": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_name",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
-                      "name": "inquiry_user_name",
-                      "expression": "`inquiry_user_name`"
+                      "name": "name",
+                      "expression": "`name`"
                     },
                     {
-                      "name": "inquiry_user_name_associativity",
+                      "name": "name_associativity",
                       "expression": "COUNT_IF(`associative_filter_predicate_group`)"
                     }
                   ],
@@ -592,8 +528,8 @@
               "encodings": {
                 "fields": [
                   {
-                    "fieldName": "inquiry_user_name",
-                    "queryName": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_user_name"
+                    "fieldName": "name",
+                    "queryName": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_name"
                   }
                 ]
               },
@@ -615,9 +551,9 @@
             "name": "tanto-eigyo",
             "queries": [
               {
-                "name": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_sales_rep_name",
+                "name": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_sales_rep_name",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "sales_rep_name",
@@ -639,7 +575,7 @@
                 "fields": [
                   {
                     "fieldName": "sales_rep_name",
-                    "queryName": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_sales_rep_name"
+                    "queryName": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_sales_rep_name"
                   }
                 ]
               },
@@ -661,9 +597,9 @@
             "name": "toiawase-bi",
             "queries": [
               {
-                "name": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_date",
+                "name": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_inquiry_date",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "inquiry_date",
@@ -685,7 +621,7 @@
                 "fields": [
                   {
                     "fieldName": "inquiry_date",
-                    "queryName": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_date"
+                    "queryName": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_inquiry_date"
                   }
                 ]
               },
@@ -707,9 +643,9 @@
             "name": "toiawase-taipu",
             "queries": [
               {
-                "name": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_type",
+                "name": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_inquiry_type",
                 "query": {
-                  "datasetName": "2c725590",
+                  "datasetName": "5212cd60",
                   "fields": [
                     {
                       "name": "inquiry_type",
@@ -731,7 +667,7 @@
                 "fields": [
                   {
                     "fieldName": "inquiry_type",
-                    "queryName": "dashboards/01f0e6ce0bf918d0908ec8ad31676e07/datasets/01f0e7b2e3741354a4c5c8f92a1b65fb_inquiry_type"
+                    "queryName": "dashboards/01f0e8405d14181d84e1ed5a8c87d193/datasets/01f0e90785b213a5b3df273d8ba957b1_inquiry_type"
                   }
                 ]
               },
