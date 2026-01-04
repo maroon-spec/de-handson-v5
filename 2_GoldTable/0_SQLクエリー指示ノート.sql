@@ -36,3 +36,13 @@
 -- MAGIC ### gold_resolve_status_mv
 -- MAGIC
 -- MAGIC > `handson_catalog.databricks.silver_inquiry_salesテーブルから、resolution_dateを月単位で集計し、resolution_statusごとの解決件数をカウントするマテリアライズドビューgold_resolve_status_mvを作成してください。月順に並べて、作成後に内容を確認したいです`
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC
+-- MAGIC ### 最後にクエリー保存を忘れずに
+-- MAGIC
+-- MAGIC <img src="../images/query_save.png" alt="クエリー保存" width="500">
+-- MAGIC
+-- MAGIC クエリーの作成が完了したら、最後に右上の「保存」ボタンをクリックしてクエリーを保存してください。ジョブ実行時に保存されていないとエラーになります。

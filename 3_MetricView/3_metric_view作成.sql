@@ -7,15 +7,23 @@
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC handson_catalog.databricks.silver_inquiry_sales　から、分析に使いためのMetric Viewを作成。
--- MAGIC [カタログ]メニューから、対象のテーブル画面から、Metric View(inquiry_metric_view) を作成してみよう。
+-- MAGIC handson_catalog.databricks.silver_inquiry_sales　から、分析に使うためのMetric Viewを作成。<br>
+-- MAGIC 対象のテーブル画面から、Metric View(silver_inquiry_sales_metric_view) を作成してみよう。
 -- MAGIC
--- MAGIC AI Assistant を使って、以下のように聞いてみよう
--- MAGIC ```
+-- MAGIC ![](../images/metric_view.png)
+-- MAGIC
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC
+-- MAGIC ### Metric View作成指示文(例)
+-- MAGIC
 -- MAGIC 問い合わせの分析をするためのMetric Viewを作成したい。
--- MAGIC ```
--- MAGIC
--- MAGIC
+-- MAGIC - Dimensions: 問い合わせ日、問い合わせタイプ、問い合わせチャネル、解決状況、営業担当、問い合わせ内容、顧客名
+-- MAGIC - Measures: 問い合わせ件数、解決済み件数、未解決件数、平均解決日数
+-- MAGIC <br>
+-- MAGIC - 補足: Commentは全て""で囲う
 
 -- COMMAND ----------
 
