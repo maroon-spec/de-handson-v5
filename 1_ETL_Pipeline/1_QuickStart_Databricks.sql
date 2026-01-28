@@ -39,7 +39,7 @@
 -- MAGIC
 -- MAGIC ## 2. CSVファイルから、bronze_sales テーブルを作成
 -- MAGIC
--- MAGIC UnityCatalog Volumes上のhandson_catalog.handson_db.handson_volume にある sales_mapping.csv ファイルを読み込み、current schema上に bronze_salesテーブルとして保存.に bronze_salesテーブルとして保存。その際にread_filesを使い、headerあり、カラムのスキーマも推測する。また作成するテーブルはすでにある場合は上書きする。最後に作成したテーブルを表示。 (mapは使わず。パスは/Volumesとする)
+-- MAGIC UnityCatalog Volumes上のhandson_catalog.handson_db.handson_volume にある sales_mapping.csv ファイルを読み込み、current schema上に bronze_salesテーブルとして保存。ファイルはCSVであり、ヘッダーを読み込む。最後に作成したテーブルを表示
 
 -- COMMAND ----------
 
@@ -47,4 +47,4 @@
 -- MAGIC
 -- MAGIC ## 3. silver_inquiry_sales テーブルを作成
 -- MAGIC
--- MAGIC handson_catalog.databricks にある silver_inquiryと bronze_sales をcs_rep と sales_rep_id をキーとして結合し、current schema上にsilver_inquiry_sales テーブルを作成。またキーに関してはcs_repカラムのみ残して、sales_rep_idは削除する。_rescued_dataカラムは不要。また作成するテーブルはすでにある場合は上書きする。最後に作成したテーブルを表示
+-- MAGIC handson_catalog.databricks にある silver_inquiryと bronze_sales をcs_rep と sales_rep_id をキーとして結合し、current schema上にsilver_inquiry_sales テーブルを作成。またキーに関してはcs_repカラムのみ残して、sales_rep_idは削除する。また作成するテーブルはすでにある場合は上書きする。最後に作成したテーブルを表示

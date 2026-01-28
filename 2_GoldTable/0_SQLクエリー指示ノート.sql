@@ -5,8 +5,15 @@
 -- MAGIC 一般的にGOlD Tableはユーザー側で作成することが多いです。その場合シンプルなSQLエディタを使った作成が可能です。
 -- MAGIC ここでも、AI Assistantを使った作成が可能となります。
 -- MAGIC
--- MAGIC ## クエリーの作成 (ケバブマークをクリックして、作成を選択)
+-- MAGIC #### Step 1. 新規クエリーの作成 
+-- MAGIC 2_GoldTableフォルダーの右にあるケバブマークをクリックして、作成ー＞クエリーを選択
 -- MAGIC <img src="../images/query_editor.png" alt="Query作成" width="500">
+-- MAGIC
+-- MAGIC #### Step 2. 作成されたクエリーをクリックして、名前をgold_inquiry_month_mvにする。
+-- MAGIC #### Step 3. 新規のMateriarized Viewを作成。（内容は以下の指示にしたがってください）
+-- MAGIC #### Step 4. 同様にgold_resolve_date_mv, gold_resolve_status_mv を作成する。 (Step2,3と同じステップ)
+-- MAGIC
+-- MAGIC 最終的に、３つの新規クエリーが作成されます。
 
 -- COMMAND ----------
 
@@ -14,10 +21,6 @@
 -- MAGIC ## SQLクエリーのAI Assistant への支持例
 -- MAGIC
 -- MAGIC スキーマのパス (handson_catalog.databricks) は随時、ご自身のパスに変更してください。
-
--- COMMAND ----------
-
--- MAGIC %run ../0_userenv
 
 -- COMMAND ----------
 
