@@ -28,7 +28,7 @@
 -- MAGIC
 -- MAGIC ### gold_inquiry_month_mv
 -- MAGIC
--- MAGIC > ```handson_catalog.databricks.silver_inquiry_sales　から月別・問い合わせタイプ別の集計をマテリアライズドビュー(gold_inquiry_month_mv）として作成して、そのあと結果を表示する。ちなみに日付部分ははdate型とする```
+-- MAGIC > ```handson_catalog.databricks.silver_inquiry_sales　から月別・問い合わせタイプ別の集計をマテリアライズドビュー(gold_inquiry_month_mv）として作成して、そのあと結果を表示する。ちなみに日付部分ははdate型とする。なお上書きが出来るようにする```
 
 -- COMMAND ----------
 
@@ -36,7 +36,7 @@
 -- MAGIC
 -- MAGIC ### gold_resolve_date_mv
 -- MAGIC
--- MAGIC > `handson_catalog.databricks.silver_inquiry_salesテーブルから、解決済み（resolution_dateがNULLでない）の問い合わせについて、inquiry_id、inquiry_date、resolution_date、および問い合わせ日から解決日までの日数を計算したマテリアライズドビューgold_resolve_date_mvを作成してください。作成後、内容を確認したいです`
+-- MAGIC > `handson_catalog.databricks.silver_inquiry_salesテーブルから、解決済み（resolution_dateがNULLでない）の問い合わせについて、inquiry_id、inquiry_date、resolution_date、および問い合わせ日から解決日までの日数を計算したマテリアライズドビューgold_resolve_date_mvを作成してください。作成後、内容を確認する。なお上書きが出来るようにする`
 
 -- COMMAND ----------
 
@@ -44,7 +44,7 @@
 -- MAGIC
 -- MAGIC ### gold_resolve_status_mv
 -- MAGIC
--- MAGIC > `handson_catalog.databricks.silver_inquiry_salesテーブルから、resolution_dateを月単位で集計し、resolution_statusごとの解決件数をカウントするマテリアライズドビューgold_resolve_status_mvを作成してください。月順に並べて、作成後に内容を確認したいです`
+-- MAGIC > `handson_catalog.databricks.silver_inquiry_salesテーブルから、resolution_dateを月単位で集計し、resolution_statusごとの解決件数をカウントするマテリアライズドビューgold_resolve_status_mvを作成してください。月順に並べて、作成後に内容を確認したいです。なお上書きが出来るようにする`
 
 -- COMMAND ----------
 
