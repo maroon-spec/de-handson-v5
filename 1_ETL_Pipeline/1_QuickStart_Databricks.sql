@@ -40,6 +40,8 @@
 -- MAGIC ## 2. CSVファイルから、bronze_sales テーブルを作成
 -- MAGIC
 -- MAGIC UnityCatalog Volumes上のhandson_catalog.handson_db.handson_volume にある sales_mapping.csv ファイルを読み込み、current schema上に bronze_salesテーブルとして保存。ファイルはCSVであり、ヘッダーを読み込む。最後に作成したテーブルを表示
+-- MAGIC
+-- MAGIC 参考Docs: https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/options#csv-options
 
 -- COMMAND ----------
 
